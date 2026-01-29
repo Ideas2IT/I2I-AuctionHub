@@ -1,0 +1,74 @@
+.bidding-panel {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.team-budget-info {
+  background: #f9fafb;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.budget-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.budget-item.highlight {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #667eea;
+  border-top: 2px solid #e5e7eb;
+  padding-top: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.quick-bid-buttons {
+  margin-bottom: 1.5rem;
+}
+
+.quick-bid-buttons label {
+  display: block;
+  margin-bottom: 0.75rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.quick-bid-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 0.75rem;
+}
+
+.quick-bid-btn {
+  padding: 0.75rem;
+  font-size: 0.9rem;
+  background: white;
+  border: 2px solid #667eea;
+  color: #667eea;
+}
+
+.quick-bid-btn:hover:not(:disabled) {
+  background: #f0f0f0;
+}
+
+.quick-bid-btn.active {
+  background: #667eea;
+  color: white;
+}
+
+.quick-bid-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.bid-button {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+}
+

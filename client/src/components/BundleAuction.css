@@ -1,0 +1,478 @@
+.bundle-auction {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 1rem;
+}
+
+.bundle-auction .card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.bundle-auction .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+  flex-direction: row;
+}
+
+.bundle-auction .card-header h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.bundle-auction .header-actions {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-left: auto;
+}
+
+.add-bundle-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-bundle-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.add-bundle-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.plus-icon {
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.bundle-auction .player-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.bundle-auction .stat-box {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  padding: 1.75rem;
+  border-radius: 16px;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.bundle-auction .stat-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.bundle-auction .stat-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #667eea;
+  margin-bottom: 0.5rem;
+}
+
+.bundle-auction .stat-label {
+  color: #666;
+  font-weight: 600;
+}
+
+.bundle-auction .players-table-container {
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: calc(100vh - 450px);
+  min-height: 300px;
+  margin-top: 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  position: relative;
+}
+
+.bundle-auction .players-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  min-width: 1000px;
+}
+
+.bundle-auction .players-table thead {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.bundle-auction .players-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+}
+
+.bundle-auction .players-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.bundle-auction .players-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+.bundle-auction .player-name-cell {
+  font-weight: 600;
+  color: #333;
+}
+
+.bundle-auction .player-email-cell {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.bundle-auction .price-cell {
+  font-weight: 600;
+  color: #10b981;
+}
+
+.bundle-auction .loading {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+  font-size: 1.2rem;
+}
+
+.bundle-auction .player-search-container {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.bundle-auction .player-search-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #333;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.bundle-auction .player-search-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+}
+
+.bundle-auction .player-search-input::placeholder {
+  color: #94a3b8;
+}
+
+.add-players-to-lot-btn {
+  padding: 0.75rem 1.5rem;
+  background: #e2e8f0;
+  color: #64748b;
+  border: 2px solid #cbd5e1;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-players-to-lot-btn:hover:not(:disabled) {
+  background: #cbd5e1;
+  color: #475569;
+  border-color: #94a3b8;
+}
+
+.lot-player-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.btn-add-team-lot {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.85rem;
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-add-team-lot:hover {
+  background: #059669;
+  transform: translateY(-1px);
+}
+
+.btn-edit-team-lot {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.85rem;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-edit-team-lot:hover {
+  background: #5568d3;
+  transform: translateY(-1px);
+}
+
+.team-cell {
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.btn-delete-player-lot {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.85rem;
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-delete-player-lot:hover:not(:disabled) {
+  background: #dc2626;
+  transform: translateY(-1px);
+}
+
+.btn-delete-player-lot:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Lot modals */
+.lot-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.lot-modal {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  max-width: 480px;
+  width: 90%;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.lot-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.lot-modal-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #1e293b;
+}
+
+.lot-modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #64748b;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.lot-modal-close:hover {
+  color: #1e293b;
+}
+
+.lot-modal-body {
+  padding: 1.5rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.lot-modal-hint,
+.lot-modal-empty {
+  color: #64748b;
+  font-size: 0.9rem;
+  margin: 0 0 1rem 0;
+}
+
+.lot-modal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.lot-modal-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.lot-modal-item:hover {
+  background: #f1f5f9;
+}
+
+.lot-modal-employee-id {
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+.lot-modal-player-name {
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+.lot-modal-current-team {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin: -0.5rem 0 1rem 0;
+}
+
+.lot-modal-current-team strong {
+  color: #059669;
+  font-weight: 600;
+}
+
+.lot-modal-form-group {
+  margin-bottom: 1rem;
+}
+
+.lot-modal-form-group:last-of-type {
+  margin-bottom: 0;
+}
+
+.lot-modal-form-group label {
+  display: block;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.lot-modal-select,
+.lot-modal-input {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.lot-modal-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.lot-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.lot-modal-textarea {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.lot-modal-textarea.bulk-assign-textarea {
+  min-height: 200px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.lot-modal-textarea:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.bulk-assign-teams-btn {
+  padding: 0.75rem 1.25rem;
+}
+
+.bulk-assign-modal {
+  max-width: 560px;
+}
+
+.bulk-assign-result {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.bulk-assign-summary {
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 0.5rem 0;
+}
+
+.bulk-assign-failed {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.bulk-assign-failed ul {
+  margin: 0.25rem 0 0 1rem;
+  padding: 0;
+}

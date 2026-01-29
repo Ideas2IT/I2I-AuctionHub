@@ -1,0 +1,305 @@
+.bundle-popup {
+  max-width: 500px;
+  max-height: 85vh;
+}
+
+.bundle-popup .popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.popup-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.manage-ranges-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.manage-ranges-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.bundle-popup .popup-body {
+  padding: 1rem 1.25rem;
+}
+
+.bundle-popup .player-info-popup {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+}
+
+.bundle-popup .player-info-popup h3 {
+  font-size: 1.2rem;
+}
+
+.bundle-range-selection {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.bundle-range-selection label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.bundle-range-selection .form-select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.bundle-range-selection .form-select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.bundle-section {
+  margin-bottom: 1rem;
+}
+
+.bundle-section label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.teams-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.5rem;
+  max-height: 250px;
+  overflow-y: auto;
+  padding: 0.5rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.team-checkbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.75rem 0.5rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.team-checkbox:hover {
+  border-color: #667eea;
+  background: #f9fafb;
+}
+
+.team-checkbox.selected {
+  border-color: #667eea;
+  background: #eef2ff;
+}
+
+.team-checkbox input {
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+}
+
+.team-checkbox span {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.25rem;
+  font-size: 0.85rem;
+}
+
+.team-checkbox small {
+  color: #666;
+  font-size: 0.7rem;
+}
+
+.team-checkbox.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: #f3f4f6;
+}
+
+.team-checkbox.disabled:hover {
+  border-color: #e5e7eb;
+  background: #f3f4f6;
+}
+
+.team-checkbox .participation-status {
+  color: #dc2626;
+  font-size: 0.65rem;
+  font-weight: 600;
+  margin-top: 0.25rem;
+}
+
+.common-bid-section {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: #f9fafb;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.common-bid-section label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.common-bid-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.common-bid-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.common-bid-input:disabled {
+  background: #f1f5f9;
+  cursor: not-allowed;
+}
+
+.common-bid-input.error {
+  border-color: #ef4444;
+  background-color: #fef2f2;
+}
+
+.common-bid-input.error:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.bid-error-message {
+  display: block;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background: #fee2e2;
+  border: 1px solid #fca5a5;
+  border-radius: 6px;
+  color: #dc2626;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.bid-range-display {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding: 0.5rem;
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  border-radius: 6px;
+}
+
+.bid-range-label {
+  font-weight: 600;
+  color: #667eea;
+  font-size: 0.85rem;
+}
+
+.bid-range-values {
+  color: #333;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.bid-hint {
+  display: block;
+  margin-top: 0.5rem;
+  color: #666;
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+.readonly-input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  background: #f9fafb;
+  color: #333;
+  cursor: not-allowed;
+}
+
+.spin-section {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.spin-button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.spin-button.spinning {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.winner-section {
+  text-align: center;
+}
+
+.winner-display {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+.winner-display h3 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1rem;
+}
+
+.winner-team {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0.75rem 0;
+}
+
+.winner-display p {
+  margin: 0.5rem 0 0 0;
+  opacity: 0.9;
+}
+

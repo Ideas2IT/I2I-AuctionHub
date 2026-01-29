@@ -1,0 +1,739 @@
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.bundle-auction-popup {
+  max-width: 500px;
+}
+
+.popup-content.bundle-auction-popup {
+  background: white;
+  border-radius: 12px;
+  padding: 0;
+  max-width: 900px;
+  width: 95%;
+  height: 85vh;
+  max-height: 85vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.popup-content.bundle-auction-popup .popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.popup-content.bundle-auction-popup .popup-header h2 {
+  margin: 0;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.popup-content.bundle-auction-popup .close-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #666;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+
+.popup-content.bundle-auction-popup .close-btn:hover {
+  color: #333;
+}
+
+.popup-content.bundle-auction-popup .popup-body {
+  padding: 1.5rem;
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Split Layout - Fixed */
+.bundle-split-layout-fixed {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.bundle-left-panel {
+  flex: 1.5;
+  min-width: 500px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.bundle-right-panel {
+  flex: 1;
+  min-width: 280px;
+}
+
+/* Select Team Form - Always Visible */
+.select-team-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-field-inline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-field-inline label {
+  font-weight: 600;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.form-field-inline .form-select,
+.form-field-inline .form-input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 0.95rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #333;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-field-inline .form-select:focus,
+.form-field-inline .form-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.15);
+}
+
+.form-field-inline .form-select.error,
+.form-field-inline .form-input.error {
+  border-color: #dc2626;
+  background: #fef2f2;
+}
+
+.btn-add-to-list {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.btn-add-to-list:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.btn-add-to-list:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.popup-content.bundle-auction-popup .input-group {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.bundle-left-panel .input-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.popup-content.bundle-auction-popup .input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.popup-content.bundle-auction-popup .form-select,
+.popup-content.bundle-auction-popup .form-input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #333;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.popup-content.bundle-auction-popup .form-select:focus,
+.popup-content.bundle-auction-popup .form-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+}
+
+.popup-content.bundle-auction-popup .input-hint {
+  display: block;
+  margin-top: 0.5rem;
+  color: #666;
+  font-size: 0.85rem;
+}
+
+.popup-content.bundle-auction-popup .popup-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.popup-content.bundle-auction-popup .popup-actions .btn {
+  flex: 1;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.popup-content.bundle-auction-popup .popup-actions .btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.popup-content.bundle-auction-popup .popup-actions .btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.popup-content.bundle-auction-popup .popup-actions .btn-secondary {
+  background: #e2e8f0;
+  color: #64748b;
+}
+
+.popup-content.bundle-auction-popup .popup-actions .btn-secondary:hover {
+  background: #cbd5e1;
+}
+
+.popup-content.bundle-auction-popup .popup-actions .btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Teams table container */
+.teams-table-container {
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f9fafb;
+  max-height: 280px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.no-teams-message {
+  color: #666;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 2rem 0.5rem;
+  font-style: italic;
+  background: #f9fafb;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.teams-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  table-layout: auto;
+  min-width: 500px;
+}
+
+.teams-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.teams-table thead {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.teams-table th {
+  padding: 0.75rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  white-space: nowrap;
+}
+
+.teams-table th:nth-child(1) {
+  width: 30%;
+  min-width: 120px;
+}
+
+.teams-table th:nth-child(2) {
+  width: 25%;
+  min-width: 140px;
+}
+
+.teams-table th:nth-child(3) {
+  width: 20%;
+  min-width: 100px;
+  text-align: center;
+}
+
+.teams-table th:nth-child(4) {
+  width: 25%;
+  min-width: 80px;
+  text-align: center;
+}
+
+.teams-table th:first-child {
+  border-top-left-radius: 6px;
+}
+
+.teams-table th:last-child {
+  border-top-right-radius: 6px;
+}
+
+.team-table-row {
+  border-bottom: 1px solid #e5e7eb;
+  transition: all 0.2s ease;
+}
+
+.team-table-row:hover {
+  background: #f8f9fa;
+}
+
+.team-table-row:last-child {
+  border-bottom: none;
+}
+
+.teams-table td {
+  padding: 0.75rem;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 0.9rem;
+  word-wrap: break-word;
+}
+
+.team-name-cell {
+  font-weight: 700;
+  color: #333;
+  font-size: 1rem;
+}
+
+.team-budget-cell {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.team-purchased-players-cell {
+  text-align: center;
+  font-weight: 600;
+  color: #667eea;
+  font-size: 0.95rem;
+}
+
+.team-min-players-cell {
+  text-align: center;
+  font-weight: 600;
+}
+
+.min-players-placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+.team-action-cell {
+  text-align: center;
+  width: 60px;
+}
+
+.team-messages {
+  padding: 0.5rem 1rem;
+  background: white;
+  border-top: 1px solid #e5e7eb;
+}
+
+.budget-bar {
+  width: 80%;
+  padding-top: 0.5rem;
+  margin: auto;
+}
+
+.remove-team-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.remove-team-btn:hover {
+  background: #dc2626;
+  transform: scale(1.1);
+}
+
+.add-team-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background: #f3f4f6;
+  border: 2px dashed #cbd5e1;
+  border-radius: 6px;
+  color: #64748b;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.add-team-btn:hover {
+  background: #e5e7eb;
+  border-color: #94a3b8;
+  color: #475569;
+}
+
+.team-select-dropdown {
+  width: 100%;
+  padding: 0.75rem;
+  background: white;
+  border: 2px solid #667eea;
+  border-radius: 6px;
+  color: #333;
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+  cursor: pointer;
+}
+
+.team-select-dropdown:focus {
+  outline: none;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+}
+
+/* Error message */
+.error-message {
+  color: #dc2626;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 4px;
+}
+
+.form-input.error {
+  border-color: #dc2626;
+  background: #fef2f2;
+}
+
+/* Info message */
+.info-message {
+  color: #059669;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+/* Team min players section */
+.team-min-players-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.team-min-players-section label {
+  display: block;
+  font-weight: 600;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.team-min-players-input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #333;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.team-min-players-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.15);
+}
+
+.team-min-players-input.error {
+  border-color: #dc2626;
+  background: #fef2f2;
+}
+
+.team-min-players-display {
+  margin-top: 0.5rem;
+}
+
+.min-players-badge {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 16px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 4px rgba(102, 126, 234, 0.2);
+  min-width: 50px;
+  text-align: center;
+}
+
+.info-message-small {
+  color: #059669;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  border-radius: 4px;
+}
+
+/* Add Team Form (Edit Mode) */
+.add-team-form {
+  background: #f8f9fa;
+  border: 2px solid #667eea;
+  border-radius: 8px;
+  padding: 0;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+  position: relative;
+  z-index: 1;
+}
+
+.add-team-form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 6px 6px 0 0;
+}
+
+.add-team-form-header h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.cancel-add-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+
+.cancel-add-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.add-team-form-body {
+  padding: 1.25rem;
+}
+
+.add-team-form-body .form-field {
+  margin-bottom: 1rem;
+}
+
+.add-team-form-body .form-field:last-of-type {
+  margin-bottom: 1.5rem;
+}
+
+.add-team-form-body label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.add-team-form-body .form-select,
+.add-team-form-body .form-input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #333;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.add-team-form-body .form-select:focus,
+.add-team-form-body .form-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.15);
+}
+
+.add-team-form-body .form-select.error,
+.add-team-form-body .form-input.error {
+  border-color: #dc2626;
+  background: #fef2f2;
+}
+
+.add-team-form-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.btn-sm {
+  padding: 0.625rem 1.25rem;
+  font-size: 0.9rem;
+}
+
+/* Toast Notification */
+.toast-notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  min-width: 300px;
+  max-width: 400px;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 10000;
+  animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.toast-error {
+  background: #fee2e2;
+  border: 2px solid #fecaca;
+  color: #991b1b;
+}
+
+.toast-success {
+  background: #d1fae5;
+  border: 2px solid #a7f3d0;
+  color: #065f46;
+}
+
+.toast-info {
+  background: #dbeafe;
+  border: 2px solid #93c5fd;
+  color: #1e40af;
+}
+
+.toast-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.toast-message {
+  flex: 1;
+  font-weight: 500;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.toast-close {
+  background: transparent;
+  border: none;
+  color: inherit;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+  flex-shrink: 0;
+}
+
+.toast-close:hover {
+  opacity: 1;
+}
+
