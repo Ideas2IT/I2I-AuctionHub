@@ -117,28 +117,6 @@ npm run client
 - Filter by All/Sold/Unsold status
 - View player details, team assignments, and sold prices
 
-## API Endpoints
-
-### Auction
-- `GET /api/auction/state` - Get current auction state
-- `POST /api/auction/start` - Start the auction
-- `POST /api/auction/stop` - Stop the auction
-- `POST /api/auction/bid` - Place a bid
-- `POST /api/auction/sell` - Finalize player sale
-- `POST /api/auction/timer` - Update timer
-
-### Teams
-- `GET /api/teams` - Get all teams
-- `GET /api/teams/:id` - Get team details
-- `POST /api/teams` - Create a team
-- `PUT /api/teams/:id` - Update a team
-- `DELETE /api/teams/:id` - Delete a team
-
-### Players
-- `GET /api/players` - Get all players
-- `GET /api/players/:id` - Get player details
-- `GET /api/players?status=sold` - Filter players by status
-
 ## Database
 
 The application uses SQLite database (`server/auction.db`) with the following tables:
@@ -215,12 +193,9 @@ ICL/
 
 ## Notes
 
-- Minimum bid increment is ₹1,000
+- Minimum bid increment is ₹5
 - Teams cannot bid more than their remaining budget
 - Players and teams are loaded from the Excel (XLSX) or CSV file; use Reload from CSV in the app or `reload-csv.bat` to refresh data
 - All bids are recorded in the database
 
 ## License
-
-ISC
-

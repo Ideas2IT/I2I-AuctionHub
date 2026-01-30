@@ -1497,7 +1497,7 @@ function AuctionDashboard({
                   <button
                     className="btn btn-primary action-btn"
                     onClick={() => setShowBundlePopup(true)}
-                    disabled={true}
+                    disabled={loading || currentPlayer.status === 'sold' || userRole !== 'admin'}
                   >
                     Bundle
                   </button>

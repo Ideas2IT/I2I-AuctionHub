@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import SoldPopup from './SoldPopup';
+import BundlePopup from './BundlePopup';
 import PurchasedPlayersPopup from './PurchasedPlayersPopup';
 import './AuctionDashboard.css';
 
@@ -15,6 +16,7 @@ function UnsoldAuctionDashboard({
 }) {
   const [currentPlayer, setCurrentPlayer] = useState(null);
   const [showSoldPopup, setShowSoldPopup] = useState(false);
+  const [showBundlePopup, setShowBundlePopup] = useState(false);
   const [loading, setLoading] = useState(false);
   const [isEditingSold, setIsEditingSold] = useState(false);
   const [editTeamId, setEditTeamId] = useState('');
@@ -612,6 +614,57 @@ function UnsoldAuctionDashboard({
       }
     } catch (error) {
       alert('Error selling player: ' + (error.response?.data?.error || error.message));
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleBundle = async (teamId, amount) => {
+    if (!currentPlayer) return;
+    
+    try {
+      setLoading(true);
+      await axios.post(`${API_URL}/players/${currentPlayer.id}/sell`, {
+        team_id: parseInt(teamId),
+        amount: parseInt(amount),
+        sale_method: 'bundle'
+      });
+      
+      setShowBundlePopup(false);
+      
+      // Reload unsold players list and land on previous player
+      const updatedUnsoldPlayers = await loadUnsoldPlayers();
+      if (updatedUnsoldPlayers.length > 0) {
+        const targetIndex = Math.max(0, currentPlayerIndex - 1);
+        const player = await fetchPlayerDetails(updatedUnsoldPlayers[targetIndex].id);
+        setCurrentPlayer(player);
+        setCurrentPlayerIndex(targetIndex);
+      } else {
+        setCurrentPlayer(null);
+        setCurrentPlayerIndex(-1);
+      }
+      
+      setExplicitlyUnsold(false);
+      
+      let freshTeams = teams;
+      try {
+        const teamsResponse = await axios.get(`${API_URL}/teams`);
+        freshTeams = teamsResponse.data || [];
+      } catch (error) {
+        console.error('Error fetching fresh teams:', error);
+      }
+      
+      onTeamsChange();
+      if (playSoldAudio) {
+        playSoldAudio();
+      }
+      await fetchTeamRanges(freshTeams);
+      await calculateTeamBidTiers(freshTeams);
+      if (bundleRanges.length > 0 && freshTeams.length > 0) {
+        await fetchAllTeamWonRanges();
+      }
+    } catch (error) {
+      alert('Error selling player (bundle): ' + (error.response?.data?.error || error.message));
     } finally {
       setLoading(false);
     }
@@ -1254,6 +1307,13 @@ function UnsoldAuctionDashboard({
                     {currentPlayer.status === 'sold' ? 'Sold' : 'Sell'}
                   </button>
                   <button
+                    className="btn btn-primary action-btn"
+                    onClick={() => setShowBundlePopup(true)}
+                    disabled={loading || currentPlayer.status === 'sold' || userRole !== 'admin'}
+                  >
+                    Bundle
+                  </button>
+                  <button
                     className="btn btn-danger action-btn"
                     onClick={handleUnsold}
                     disabled={loading || userRole !== 'admin' || explicitlyUnsold || currentPlayer?.status === 'unsold'}
@@ -1373,6 +1433,26 @@ function UnsoldAuctionDashboard({
           teamBidTiers={teamBidTiers}
           onClose={() => setShowSoldPopup(false)}
           onSave={handleSold}
+        />
+      )}
+
+      {showBundlePopup && (
+        <BundlePopup
+          player={currentPlayer}
+          teams={teams}
+          onClose={async () => {
+            setShowBundlePopup(false);
+            onTeamsChange();
+            setTimeout(async () => {
+              onTeamsChange();
+              if (bundleRanges.length > 0 && teams.length > 0) {
+                await fetchAllTeamWonRanges();
+              }
+            }, 500);
+          }}
+          onSave={handleBundle}
+          userRole={userRole}
+          playSoldAudio={playSoldAudio}
         />
       )}
 
