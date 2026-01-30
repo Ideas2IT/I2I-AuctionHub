@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const { getDb } = require('../database');
+const { authenticate } = require('../middleware/auth');
+
+// All bundle routes require authentication
+router.use(authenticate);
 
 // Get all bundle ranges
 router.get('/ranges', (req, res) => {
@@ -103,8 +107,6 @@ router.get('/participation/team/:teamId', (req, res) => {
         console.error(`Error fetching raw participations for team ${teamId}:`, err);
         return res.status(500).json({ error: err.message });
       }
-      console.log(`Team ${teamId} raw participations (before JOIN):`, rawParticipations);
-      
       // Now get participations with range details via JOIN
       db.all(
         `SELECT bp.*, br.range_value, br.range_letter 
@@ -128,8 +130,6 @@ router.get('/participation/team/:teamId', (req, res) => {
             return p;
           });
           
-          console.log(`Team ${teamId} participations (with JOIN):`, enrichedParticipations);
-          console.log(`Team ${teamId} won participations:`, enrichedParticipations.filter(p => p.result === 'won'));
           res.json(enrichedParticipations || []);
         }
       );

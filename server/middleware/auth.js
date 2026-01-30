@@ -1,9 +1,7 @@
 const { getDb } = require('../database');
 
 function authenticate(req, res, next) {
-  const sessionId = req.headers.authorization?.replace('Bearer ', '') || 
-                   req.body.sessionId || 
-                   req.query.sessionId;
+  const sessionId = req.headers.authorization?.replace('Bearer ', '');
   
   if (!sessionId) {
     return res.status(401).json({ error: 'Authentication required' });

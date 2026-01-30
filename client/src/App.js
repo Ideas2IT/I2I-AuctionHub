@@ -3,6 +3,7 @@ import io from 'socket.io-client';
 import axios from 'axios';
 import './App.css';
 import Login from './components/Login';
+import SignUp from './components/SignUp';
 import AuctionDashboard from './components/AuctionDashboard';
 import UnsoldAuctionDashboard from './components/UnsoldAuctionDashboard';
 import TeamManagement from './components/TeamManagement';
@@ -26,6 +27,7 @@ function App() {
   const [activeTab, setActiveTab] = useState('auction');
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [showRangesManagement, setShowRangesManagement] = useState(false);
+  const [showSignUp, setShowSignUp] = useState(false);
   const [audioMuted, setAudioMuted] = useState(() => {
     const saved = localStorage.getItem('audioMuted');
     return saved ? JSON.parse(saved) : false;
@@ -239,7 +241,6 @@ function App() {
       if (expires > new Date()) {
         // Verify with server
         axios.get(`${API_URL}/auth/verify`, {
-          params: { sessionId },
           headers: { Authorization: `Bearer ${sessionId}` }
         })
         .then(response => {
@@ -362,9 +363,22 @@ function App() {
     }
   };
 
-  // Show login if not authenticated
+  // Show login or sign up if not authenticated
   if (!user) {
-    return <Login onLogin={handleLogin} />;
+    if (showSignUp) {
+      return (
+        <SignUp
+          onSwitchToLogin={() => setShowSignUp(false)}
+          onLoginAfterSignup={handleLogin}
+        />
+      );
+    }
+    return (
+      <Login
+        onLogin={handleLogin}
+        onSwitchToSignUp={() => setShowSignUp(true)}
+      />
+    );
   }
 
   const fetchAuctionState = async () => {

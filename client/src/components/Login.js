@@ -4,7 +4,7 @@ import './Login.css';
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
-function Login({ onLogin }) {
+function Login({ onLogin, onSwitchToSignUp }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -16,13 +16,10 @@ function Login({ onLogin }) {
     setLoading(true);
 
     try {
-      console.log('Attempting login to:', `${API_URL}/auth/login`);
       const response = await axios.post(`${API_URL}/auth/login`, {
         username: username.trim(),
         password: password
       });
-
-      console.log('Login response:', response.data);
 
       if (response.data.success) {
         // Store session in localStorage
@@ -40,7 +37,6 @@ function Login({ onLogin }) {
         setError('Login failed. Invalid response from server.');
       }
     } catch (err) {
-      console.error('Login error:', err);
       let errorMessage = 'Login failed. ';
       
       if (err.code === 'ECONNREFUSED' || err.message.includes('Network Error') || err.message.includes('Failed to fetch')) {
@@ -54,7 +50,6 @@ function Login({ onLogin }) {
       }
       
       setError(errorMessage);
-      console.error('Full error:', err);
     } finally {
       setLoading(false);
     }
@@ -76,7 +71,7 @@ function Login({ onLogin }) {
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              placeholder="Enter username (admin or user)"
+              placeholder="Enter username"
               required
               autoFocus
             />
@@ -103,6 +98,15 @@ function Login({ onLogin }) {
           >
             {loading ? 'Logging in...' : 'Login'}
           </button>
+
+          {onSwitchToSignUp && (
+            <p className="login-switch">
+              Don&apos;t have an account?{' '}
+              <button type="button" className="link-button" onClick={onSwitchToSignUp}>
+                Sign up
+              </button>
+            </p>
+          )}
         </form>
       </div>
     </div>

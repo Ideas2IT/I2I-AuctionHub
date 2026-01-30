@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const { getDb } = require('../database');
+const { authenticate } = require('../middleware/auth');
+
+// All auction routes require authentication
+router.use(authenticate);
 
 // Get auction state
 router.get('/state', (req, res) => {

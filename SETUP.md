@@ -219,42 +219,24 @@ Data is automatically loaded from the Excel/CSV file when:
 
 ## User Authentication
 
-### Default Users
+There are **no default usernames or passwords**. All accounts are created via **Sign up** on the login screen. Passwords are stored using secure hashing (bcrypt).
 
-The application comes with two default user accounts:
+### Sign Up Flow
 
-#### Admin User:
-- **Username**: `admin`
-- **Password**: `admin123`
-- **Role**: Admin
-- **Permissions**: 
-  - Full access to all features
-  - Can create/edit/delete teams
-  - Can sell players, bundle auction, mark as unsold
-  - Can reload data from CSV
-  - Can edit sold player details
+1. Open the application (e.g. http://localhost:3000).
+2. On the login screen, click **Sign up**.
+3. Choose a **username** (at least 2 characters) and **password** (at least 6 characters).
+4. Confirm your password and submit. The first user to sign up is automatically given **admin** role; all later sign-ups get **user** role.
 
-#### Regular User:
-- **Username**: `user`
-- **Password**: `user123`
-- **Role**: User
-- **Permissions**:
-  - View-only access
-  - Can view teams, players, and auction dashboard
-  - Can download CSV files
-  - Cannot perform any actions (sell, edit, delete, etc.)
+### Roles
 
-### Changing Default Passwords
+- **Admin**: Full access — create/edit/delete teams, sell players, bundle auction, reload data from CSV, edit sold player details.
+- **User**: View-only — view teams, players, and auction dashboard; download CSV; cannot sell, edit, or delete.
 
-To change default passwords, edit `server/routes/auth.js`:
-```javascript
-const users = [
-  { username: 'admin', password: 'your-new-password', role: 'admin' },
-  { username: 'user', password: 'your-new-password', role: 'user' }
-];
-```
+### Security
 
-**Security Note**: For production use, implement proper password hashing and user management.
+- Passwords are hashed with bcrypt before storage; they are never stored in plain text.
+- No credentials are hardcoded in the application.
 
 ---
 

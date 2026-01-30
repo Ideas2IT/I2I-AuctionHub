@@ -111,6 +111,19 @@ function initializeDatabase() {
           expires_at DATETIME NOT NULL
         )`);
 
+        // Users table (username + hashed password; no hardcoded credentials)
+        db.run(`CREATE TABLE IF NOT EXISTS users (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          username TEXT NOT NULL UNIQUE,
+          password_hash TEXT NOT NULL,
+          role TEXT NOT NULL DEFAULT 'user',
+          created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        )`, (err) => {
+          if (err && !err.message.includes('already exists')) {
+            console.warn('Warning: Could not create users table:', err.message);
+          }
+        });
+
         // Bundle ranges table
         db.run(`CREATE TABLE IF NOT EXISTS bundle_ranges (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -267,8 +280,6 @@ function loadTeamsFromFile() {
               budgetValue = isNaN(parsed) ? 0 : parsed;
             }
             
-            console.log(`Team: ${teamName}, Budget from file: "${budget}", Parsed budget: ${budgetValue}`);
-            
             teams.push({
               name: teamName,
               min_players: parseInt(minPlayers) || 0,
@@ -298,7 +309,7 @@ function loadTeamsFromFile() {
           name.toLowerCase().includes('team') || name.toLowerCase() === 'team name'
         ) || workbook.SheetNames[0];
         
-        console.log(`Reading teams from sheet: "${sheetName}"`);
+        // Reading teams from sheet
         const worksheet = workbook.Sheets[sheetName];
         const data = xlsx.utils.sheet_to_json(worksheet);
         
@@ -312,8 +323,6 @@ function loadTeamsFromFile() {
         
         if (firstRow) {
           const allColumns = Object.keys(firstRow);
-          console.log('Available columns in Excel:', allColumns);
-          
           // Find Team Name column
           teamNameColumn = allColumns.find(key => 
             key.toLowerCase().includes('team') && key.toLowerCase().includes('name')
@@ -343,7 +352,6 @@ function loadTeamsFromFile() {
             return (lowerKey.includes('total') && lowerKey.includes('budget')) || lowerKey === 'budget';
           });
           
-          console.log(`Team Name column: "${teamNameColumn}", Min Players column: "${minPlayersColumn}", Captain column: "${captainColumn}", Wise Captain column: "${wiseCaptainColumn}", Total Budget column: "${budgetColumn}"`);
         }
         
         data.forEach((row, index) => {
@@ -365,8 +373,6 @@ function loadTeamsFromFile() {
               const parsed = parseInt(budget.toString().trim());
               budgetValue = isNaN(parsed) ? 0 : parsed;
             }
-            
-            console.log(`Team: ${teamName}, Budget from file: "${budget}", Parsed budget: ${budgetValue}`);
             
             teams.push({
               name: teamName,
@@ -440,14 +446,12 @@ function processTeams(teams, resolve, reject) {
           if (updateErr) {
             console.error(`Error updating team ${teamName}:`, updateErr.message);
           } else {
-            console.log(`Updated team ${teamName}: budget=${budget}, min_players=${minPlayers}, captain=${captain || 'null'}, wise_captain=${wiseCaptain || 'null'}`);
           }
           processed++;
           checkComplete();
         });
       } else {
         // New team inserted
-        console.log(`Inserted new team ${teamName} with budget: ${budget}, min_players: ${minPlayers}, captain: ${captain || 'null'}, wise_captain: ${wiseCaptain || 'null'}`);
         processed++;
         checkComplete();
       }
@@ -589,15 +593,9 @@ function loadPlayersFromFile() {
           name.toLowerCase().includes('player') || name.toLowerCase() === 'player list'
         ) || workbook.SheetNames[0];
         
-        console.log(`Reading players from sheet: "${sheetName}"`);
+        // Reading players from sheet
         const worksheet = workbook.Sheets[sheetName];
         const data = xlsx.utils.sheet_to_json(worksheet);
-        
-        // Log column names for debugging
-        if (data.length > 0) {
-          console.log('Available columns in Excel:', Object.keys(data[0]));
-          console.log('Sample row:', data[0]);
-        }
         
         const firstRow = data[0];
         const columnName = firstRow ? Object.keys(firstRow)[0] : null;
@@ -653,12 +651,6 @@ function loadPlayersFromFile() {
               category: category ? category.toString().trim() : null,
               base_price: basePrice ? parseInt(basePrice) || null : null
             };
-            
-            // Log first few players for debugging
-            if (players.length < 3) {
-              console.log(`Player ${players.length + 1}:`, playerData);
-            }
-            
             players.push(playerData);
           }
         });
@@ -910,7 +902,6 @@ function loadLotDetailsFromFile() {
       
       // Log column names for debugging
       if (data.length > 0) {
-        console.log('Available columns in Lot Details sheet:', Object.keys(data[0]));
       }
 
       const lotPlayers = [];

@@ -147,9 +147,8 @@ echo   1. Ensure your Excel/CSV file is in the root directory
 echo   2. Run 'start.bat' to start the application
 echo   3. Or run 'npm start' to start both servers
 echo.
-echo Default Login Credentials:
-echo   Admin: username='admin', password='admin123'
-echo   User:  username='user', password='user123'
+echo Authentication: No default accounts. Use Sign up on the login page.
+echo   First user to sign up becomes Admin; others get User role.
 echo.
 echo Application URLs:
 echo   Frontend: http://localhost:3000

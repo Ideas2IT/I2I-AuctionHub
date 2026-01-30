@@ -179,7 +179,7 @@ ICL/
 │   │   ├── App.js
 │   │   └── index.js
 │   └── package.json
-├── ICL Auction List.xlsx   # Excel data file (or ICL Auction List.csv)
+├── (data files *.xlsx / *.csv are gitignored; add locally)
 ├── package.json
 └── README.md
 ```
@@ -191,11 +191,20 @@ ICL/
 - Socket.io handles real-time communication
 - Database is automatically initialized on first run
 
+## Security
+
+- **No default credentials** — Create accounts via Sign up on the login page. First user becomes admin.
+- **Passwords** are hashed with bcrypt; they are never stored in plain text.
+- **Data APIs** (players, teams, auction, bundle) require authentication; session is sent in the `Authorization: Bearer` header only (not in URLs).
+- **Sensitive files** — `.env`, database files (`*.db`), and data files (`*.xlsx`, `*.xls`) are in `.gitignore` and should not be committed.
+- To report a security issue, see [SECURITY.md](SECURITY.md).
+
 ## Notes
 
 - Minimum bid increment is ₹5
 - Teams cannot bid more than their remaining budget
 - Players and teams are loaded from the Excel (XLSX) or CSV file; use Reload from CSV in the app or `reload-csv.bat` to refresh data
+- Data files (e.g. `ICL Auction List.xlsx`) are gitignored; add your own file locally and do not commit files containing real PII
 - All bids are recorded in the database
 
 ## License

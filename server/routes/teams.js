@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const { getDb, loadDataFromFile } = require('../database');
+const { authenticate } = require('../middleware/auth');
+
+// All team routes require authentication
+router.use(authenticate);
 
 // Get all teams
 router.get('/', (req, res) => {

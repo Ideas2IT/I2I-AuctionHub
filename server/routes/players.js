@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const { getDb } = require('../database');
+const { authenticate } = require('../middleware/auth');
+
+// All player routes require authentication
+router.use(authenticate);
 
 // Get all players
 router.get('/', (req, res) => {

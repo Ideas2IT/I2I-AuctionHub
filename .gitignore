@@ -7,13 +7,23 @@ client/node_modules/
 *.sqlite
 *.sqlite3
 
+# Data files (may contain PII - do not commit)
+*.xls
+*Auction List*
+*Player List*
+
 # Build outputs
 client/build/
 dist/
 
-# Environment variables
+# Environment variables (never commit secrets)
 .env
 .env.local
+.env.*.local
+
+# Internal security / sensitive reports (optional - remove to publish)
+SENSITIVE_DATA_REPORT.md
+SENSITIVE_DATA_AND_QMS_REPORT.md
 
 # IDE
 .vscode/
