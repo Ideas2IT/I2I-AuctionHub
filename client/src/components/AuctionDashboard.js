@@ -6,6 +6,7 @@ import PurchasedPlayersPopup from './PurchasedPlayersPopup';
 import './AuctionDashboard.css';
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const S3_PROFILE_PHOTOS_BASE = (process.env.REACT_APP_S3_PROFILE_PHOTOS_BASE_URL || '').replace(/\/$/, '');
 
 function AuctionDashboard({
   teams,
@@ -1320,10 +1321,11 @@ function AuctionDashboard({
                       alt={playerNameAndId}
                       className="player-image"
                     />
-                    {/* Hidden preloader - tries to load actual image URLs */}
+                    {/* Hidden preloader - tries to load actual image URLs from env-configured S3 base */}
+                    {S3_PROFILE_PHOTOS_BASE && (
                     <img
                       key={`preloader-${currentPlayer.employee_id}-${imageAttempt.protocol}-${imageAttempt.extension}`}
-                      src={`${imageAttempt.protocol}://s3-ap-south-1.amazonaws.com/ideas2it/profile_photos/${currentPlayer.employee_id}.${imageAttempt.extension}`}
+                      src={`${S3_PROFILE_PHOTOS_BASE}/${currentPlayer.employee_id}.${imageAttempt.extension}`}
                       alt=""
                       style={{ display: 'none' }}
                       onLoad={(e) => {
@@ -1343,6 +1345,7 @@ function AuctionDashboard({
                         }
                       }}
                     />
+                    )}
                   </div>
                 )}
                 

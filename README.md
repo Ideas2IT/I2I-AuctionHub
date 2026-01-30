@@ -45,6 +45,28 @@ Or install all dependencies at once:
 npm run install-all
 ```
 
+## Environment Variables
+
+Create a `.env` file in the project root (do not commit it). Copy from the example and set your values:
+
+```bash
+cp .env.example .env
+```
+
+Then edit `.env` with your settings:
+
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `REACT_APP_S3_PROFILE_PHOTOS_BASE_URL` | Optional* | Full base URL for S3 profile photos (e.g. `https://bucket.s3-region.amazonaws.com/path`). Used for player profile images in Auction and Unsold dashboards. If not set, placeholder images are shown. |
+| `S3_PROFILE_PHOTOS_BASE_URL` | Optional | Same URL for backend (server) use. |
+| `REACT_APP_API_URL` | Optional | Backend API URL (default: `http://localhost:5000/api`). |
+| `REACT_APP_SOCKET_URL` | Optional | Socket.io URL (default: `http://localhost:5000`). |
+| `PORT` | Optional | Backend server port (default: `5000`). |
+
+\*Required only if you want profile photos to load from S3; otherwise the app works with placeholders.
+
+- **`.env`** is in `.gitignore` and must not be committed. Use **`.env.example`** as a template only (it has no real values).
+
 ## Running the Application
 
 ### Quick Start (Recommended)

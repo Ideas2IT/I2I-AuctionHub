@@ -16,10 +16,14 @@ client/node_modules/
 client/build/
 dist/
 
-# Environment variables (never commit secrets)
+# Environment variables (never commit - copy .env.example to .env locally)
 .env
 .env.local
+.env.development.local
+.env.test.local
+.env.production.local
 .env.*.local
+.env.example
 
 # Internal security / sensitive reports (optional - remove to publish)
 SENSITIVE_DATA_REPORT.md
