@@ -4,8 +4,6 @@ A real-time auction application for the ICL Tournament 2026 player auction. This
 
 ## Features
 
-- 🎯 **Real-time Bidding**: Live auction with WebSocket support for instant updates
-- ⏱️ **Auction Timer**: Countdown timer for each player
 - 👥 **Team Management**: Create and manage teams with budget tracking
 - 📊 **Player Management**: View all players, their status (sold/unsold), and team assignments
 - 💰 **Budget Tracking**: Track team budgets, spending, and remaining balance
@@ -16,7 +14,7 @@ A real-time auction application for the ICL Tournament 2026 player auction. This
 - **Backend**: Node.js, Express.js, Socket.io
 - **Frontend**: React.js
 - **Database**: SQLite
-- **Real-time**: WebSocket (Socket.io)
+- **Real-time**: WebSocket (Socket.io) for live updates
 
 ## Prerequisites
 
@@ -149,7 +147,37 @@ The application uses SQLite database (`server/auction.db`) with the following ta
 - `bids` - Bid history
 - `auction_state` - Current auction state
 
-Players are automatically loaded from `Player List ICL.csv` on first startup.
+## ICL Auction Data: Excel (XLSX) File & Reload CSV
+
+### Data File Setup
+
+The application loads player and team data from an **Excel (.xlsx)** file or **CSV** file placed in the project root.
+
+1. **Excel file**: Place your file as **`ICL Auction List.xlsx`** in the root directory (same folder as `package.json`).
+2. **CSV alternative**: You can use **`ICL Auction List.csv`** in the root directory. CSV supports one sheet only; use separate files if you have multiple sheets.
+3. **Required structure**:  
+   - **Teams sheet**: Team names and budgets.  
+   - **Players sheet**: Player details (name, email, employee ID, category, base price, etc.).  
+   - **Lot Details sheet** (optional): For lot auction players.
+
+### Loading Data
+
+- **First run**: Data is loaded automatically from the Excel/CSV file when the server starts.
+- **Reload data**: To refresh data from the file (e.g. after updating the Excel/CSV):
+  - **From UI**: Go to **Teams** or **Players** tab and use **Reload from CSV** (Admin only). This reloads from the configured Excel/CSV file.
+  - **From command line (Windows)**: Run `reload-csv.bat` to trigger a reload (server must be running).
+- **Note**: Reloading clears existing players and teams in the database and loads fresh data from the file. Ensure the file is in the correct format before reloading.
+
+### File Location
+
+```
+ICL/
+├── ICL Auction List.xlsx   ← Place your Excel file here (or use CSV)
+├── package.json
+├── server/
+├── client/
+└── README.md
+```
 
 ## Project Structure
 
@@ -173,7 +201,7 @@ ICL/
 │   │   ├── App.js
 │   │   └── index.js
 │   └── package.json
-├── Player List ICL.csv
+├── ICL Auction List.xlsx   # Excel data file (or ICL Auction List.csv)
 ├── package.json
 └── README.md
 ```
@@ -187,10 +215,9 @@ ICL/
 
 ## Notes
 
-- The auction timer counts down from 60 seconds
 - Minimum bid increment is ₹1,000
 - Teams cannot bid more than their remaining budget
-- Players are automatically loaded from the CSV file
+- Players and teams are loaded from the Excel (XLSX) or CSV file; use Reload from CSV in the app or `reload-csv.bat` to refresh data
 - All bids are recorded in the database
 
 ## License
